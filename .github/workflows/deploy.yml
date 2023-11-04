@@ -19,7 +19,7 @@ jobs:
         with:
             node-version: '14'
             cache: 'npm'
-            cache-dependency-path: /finance/src/package-lock.json
+            cache-dependency-path: /finance/finance/src/package-lock.json
       - name: Install dependencies
         run: npm install
 
