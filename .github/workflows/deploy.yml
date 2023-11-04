@@ -16,21 +16,21 @@ jobs:
 
       - name: Setup Node
         uses: actions/setup-node@v3            
-        with:
-            node-version: '14'
-            cache: 'npm'
-            cache-dependency-path: /finance/finance/src/package-lock.json
+        
       - name: Install dependencies
         run: npm install
 
       - name: Build project
         run: npm run build
 
-      - name: Upload production-ready build files
-        uses: actions/upload-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
+      # - name: Run test suite
+      #   run: npm run test
+
+      # - name: Upload production-ready build files
+      #   uses: actions/upload-artifact@v3
+      #   with:
+      #     name: production-files
+      #     path: ./dist
 
   deploy:
     name: Deploy
@@ -39,11 +39,11 @@ jobs:
     if: github.ref == 'refs/heads/main'
 
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v3
-        with:
-          name: production-files
-          path: ./dist
+      # - name: Download artifact
+      #   uses: actions/download-artifact@v3
+      #   with:
+      #     name: production-files
+      #     path: ./dist
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
